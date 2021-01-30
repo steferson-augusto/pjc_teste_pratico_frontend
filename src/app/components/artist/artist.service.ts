@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'
+import { EventEmitter, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
-import { ArtistPagination } from './artist.model'
+import { Artist, ArtistPagination, ArtistRequest } from './artist.model'
 import { environment } from 'src/environments/environment'
 
 @Injectable({
@@ -13,7 +13,26 @@ export class ArtistService {
     private http: HttpClient
   ) { }
 
+  static emitArtistCreated = new EventEmitter<boolean>()
+
   readonly baseUrl = `${environment.baseUrl}/artists`
+  readonly errors = {
+    name: {
+      required: 'Campo obrigatório',
+      minlength: 'Mínimo de caracteres não atingido',
+      min: 'Mínimo de caracteres não atingido',
+      maxlength: 'Máximo de caracteres excedido',
+      max: 'Máximo de caracteres excedido'
+    }
+  }
+
+  emit (): void {
+    ArtistService.emitArtistCreated.emit(true)
+  }
+
+  create (artist: Artist): Observable<ArtistRequest> {
+    return this.http.post<ArtistRequest>(this.baseUrl, artist)
+  }
 
   list (order: string, page: number, perPage: number, artist: string): Observable<ArtistPagination> {
     const direction = order ?? 'asc'

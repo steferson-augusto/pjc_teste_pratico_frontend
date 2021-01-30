@@ -43,6 +43,7 @@ export class ArtistListComponent implements AfterViewInit {
     merge(
       this.sort.sortChange,
       this.paginator.page,
+      ArtistService.emitArtistCreated,
       this.name.valueChanges.pipe(debounceTime(1000))
     )
       .pipe(
@@ -67,7 +68,6 @@ export class ArtistListComponent implements AfterViewInit {
         catchError((error) => {
           console.log(error)
           this.isLoadingResults = false
-          // Catch if the GitHub API has reached its rate limit. Return empty data.
           this.isRateLimitReached = true
           return observableOf([])
         })

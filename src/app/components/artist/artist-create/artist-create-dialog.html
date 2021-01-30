@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Adicionar artista</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Nome do artista ou banda" [formControl]="name" name="name">
+    <mat-error *ngFor="let validation of validations" [ngxErrors]="name">
+      <span [ngxError]="validation">{{ errors[validation] }}</span>
+    </mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <div class="container-button">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button
+      mat-raised-button color="primary"
+      [disabled]="name.invalid || name.pristine || loading"
+      [class.spinner]="loading"
+      (click)="create()"
+    >
+    Adicionar
+  </button>
+  </div>
+</div>
+

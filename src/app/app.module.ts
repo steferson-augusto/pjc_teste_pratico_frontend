@@ -17,6 +17,7 @@ import { ArtistsComponent } from './pages/artists/artists.component'
 import { AlbumsComponent } from './pages/albums/albums.component'
 import { AuthComponent } from './pages/auth/auth.component'
 import { ArtistListComponent } from './components/artist/artist-list/artist-list.component'
+import { ArtistCreateComponent, DialogArtistCreate } from './components/artist/artist-create/artist-create.component'
 
 @NgModule({
   declarations: [
@@ -27,18 +28,20 @@ import { ArtistListComponent } from './components/artist/artist-list/artist-list
     ArtistsComponent,
     AlbumsComponent,
     AuthComponent,
-    ArtistListComponent
+    ArtistListComponent,
+    ArtistCreateComponent,
+    DialogArtistCreate
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxErrorsModule,
-    MaterialModule
+    MaterialModule,
+    NgxErrorsModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
