@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgxErrorsModule } from '@ngspot/ngx-errors'
 
 import { AppRoutingModule } from './app-routing.module'
+import { httpInterceptorProviders } from './helpers/http-interceptors'
 import { MaterialModule } from './material.module'
 import { AppComponent } from './app.component'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
@@ -39,7 +40,7 @@ import { ArtistListComponent } from './components/artist/artist-list/artist-list
     NgxErrorsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
