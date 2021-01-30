@@ -12,7 +12,7 @@ import { AuthService } from './auth.service'
 export class AuthComponent implements OnInit {
   form: FormGroup
   loading = false
-  errors: Error[] = []
+  error: string = ''
   constructor (
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -26,11 +26,6 @@ export class AuthComponent implements OnInit {
     })
   }
 
-  // get error (): string {
-  //   const value = this.errors.find(error => error.field === 'general')
-  //   return value?.message ?? ''
-  // }
-
   onSubmit () {
     this.loading = true
     this.authService.login(this.form.value).subscribe(
@@ -41,7 +36,8 @@ export class AuthComponent implements OnInit {
       },
       ({ error }) => {
         this.loading = false
-        this.errors = error
+        this.error = error?.[0]?.message ?? 'Falha na requisição, tente novamente mais tarde'
+        this.form.setErrors({ general: true })
         console.error(error)
       }
     )
