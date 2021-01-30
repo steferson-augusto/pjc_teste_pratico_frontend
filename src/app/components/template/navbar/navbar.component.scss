@@ -35,6 +35,7 @@ $query-small: 600px;
   transition: 0.5s;
   transition-property: left;
   overflow-y: auto;
+  z-index: 9;
 
   @media screen and (max-width: $query-small) {
     width: 100%;
@@ -140,13 +141,15 @@ $query-small: 600px;
 .content{
   margin-left: 250px;
   padding: 16px;
-  padding-top: 80px;
-  height: calc(100vh - 64px);
+  padding-top: 64px;
+  height: calc(100vh - 80px);
   transition: 0.5s;
 
   @media screen and (max-width: $query-small) {
     margin: 0;
-    padding: 56px 0 0 0;
-    height: calc(100vh - 56px - 56px);
+    padding: 16px;
+    padding-top: 56px;
+    height: calc(100vh - 72px - 56px);
+    overflow-y: auto;
   }
 }
