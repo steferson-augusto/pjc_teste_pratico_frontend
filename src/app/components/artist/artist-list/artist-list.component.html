@@ -1,0 +1,51 @@
+<div class="search">
+  <mat-form-field>
+    <mat-label>Pesquisar por:</mat-label>
+    <input matInput placeholder="Nome do artista ou banda" [formControl]="name" name="name">
+  </mat-form-field>
+</div>
+
+<div class="view-container container mat-elevation-z2">
+<div class="loading-shade"
+     *ngIf="isLoadingResults || isRateLimitReached">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div class="rate-limit-reached" *ngIf="isRateLimitReached">
+    {{ error }}
+  </div>
+</div>
+
+<div class="table-container">
+  <table mat-table [dataSource]="data" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Artista / banda</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action" class="action">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="navigate(row.id)"
+          aria-label="Editar artista / banda"
+          matTooltip="Abrir detalhes de {{ row.name }}"
+          matTooltipPosition="above"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="resultsLength" [pageSize]="5"></mat-paginator>
+</div>

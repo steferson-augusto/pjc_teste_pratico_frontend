@@ -15,6 +15,7 @@ import { UsersComponent } from './pages/users/users.component'
 import { ArtistsComponent } from './pages/artists/artists.component'
 import { AlbumsComponent } from './pages/albums/albums.component'
 import { AuthComponent } from './pages/auth/auth.component'
+import { ArtistListComponent } from './components/artist/artist-list/artist-list.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthComponent } from './pages/auth/auth.component'
     UsersComponent,
     ArtistsComponent,
     AlbumsComponent,
-    AuthComponent
+    AuthComponent,
+    ArtistListComponent
   ],
   imports: [
     BrowserModule,
