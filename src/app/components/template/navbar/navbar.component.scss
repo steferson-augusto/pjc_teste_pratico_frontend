@@ -1,0 +1,140 @@
+@import "~@angular/material/theming";
+@import '/src/theme.scss';
+
+$sidebar-color: #E5E5E5;
+$sidebar-hover: #D5D5D5;
+$query-small: 600px;
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
+  span > a {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.btn-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: $query-small) {
+    display: none;
+  }
+}
+
+.sidebar {
+  background: $sidebar-color;
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  margin-top: 64px;
+  transition: 0.5s;
+  transition-property: left;
+  overflow-y: auto;
+
+  @media screen and (max-width: $query-small) {
+    width: 100%;
+    height: 64px;
+    margin-top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: auto;
+    background-color: mat-color($my-app-primary);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: $sidebar-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px 10px $sidebar-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px mat-color($my-app-primary);
+    border: solid 2px transparent;
+    border-radius: 10px;
+  }
+
+  h4{
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  a{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+    padding-left: 30px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    color: #333;
+
+    @media screen and (max-width: $query-small) {
+      height: 100%;
+      flex: 1;
+      padding: 0 12px;
+      justify-content: center;
+      color: #fff;
+
+      span {
+        display: none;
+      }
+    }
+
+    &:hover{
+      background: $sidebar-hover;
+
+      @media screen and (max-width: $query-small) {
+        background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
+      }
+    }
+
+    i {
+      padding: 0 8px;
+    }
+  }
+}
+
+@media screen and (min-width: $query-small) {
+  #check{
+    display: none;
+
+    &:checked ~ .sidebar{
+      left: -190px;
+
+      a{
+        height: 60px;
+        font-size: 20px;
+        margin-left: 170px;
+        width: 80px;
+
+        span{
+          display: none;
+        }
+      }
+    }
+
+    &:checked ~ .content{
+      margin-left: 60px;
+    }
+  }
+}
+
+.content{
+  margin-left: 250px;
+  height: 100vh;
+  transition: 0.5s;
+}
