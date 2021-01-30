@@ -18,6 +18,7 @@ import { AlbumsComponent } from './pages/albums/albums.component'
 import { AuthComponent } from './pages/auth/auth.component'
 import { ArtistListComponent } from './components/artist/artist-list/artist-list.component'
 import { ArtistCreateComponent, DialogArtistCreate } from './components/artist/artist-create/artist-create.component'
+import { CustomSnackbarComponent } from './components/template/custom-snackbar/custom-snackbar.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ArtistCreateComponent, DialogArtistCreate } from './components/artist/a
     AuthComponent,
     ArtistListComponent,
     ArtistCreateComponent,
-    DialogArtistCreate
+    DialogArtistCreate,
+    CustomSnackbarComponent
   ],
   imports: [
     BrowserModule,

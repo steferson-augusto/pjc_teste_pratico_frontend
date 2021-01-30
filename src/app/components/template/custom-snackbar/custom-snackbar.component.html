@@ -1,0 +1,14 @@
+<div class="container">
+  <mat-icon *ngIf="data.icon">{{ data.icon }}</mat-icon>
+  <span>{{ data.text }}</span>
+  <button *ngIf="data.action" mat-button color="accent" (click)="snackBarRef.dismissWithAction()">
+    {{ data.action }}
+  </button>
+  <button *ngIf="!data.action"
+    mat-icon-button
+    aria-label="Fechar notificação"
+    (click)="snackBarRef.dismiss()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
