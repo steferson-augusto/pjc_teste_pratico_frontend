@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgxErrorsModule } from '@ngspot/ngx-errors'
 
 import { AppRoutingModule } from './app-routing.module'
 import { MaterialModule } from './material.module'
@@ -33,6 +34,7 @@ import { AuthComponent } from './pages/auth/auth.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxErrorsModule,
     MaterialModule
   ],
   providers: [],
