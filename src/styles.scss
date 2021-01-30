@@ -1,4 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #3f51b5;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.success {
+  background: #2e7d32;
+  color: #fafafa;
+}
+
+.warning {
+  background: #f44336;;
+  color: #fafafa;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner {
+  &:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: var(--primary);
+    animation: spinner .8s linear infinite;
+  }
+
+  &:disabled mat-icon {
+    opacity: 0;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-error {
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.2;
+}

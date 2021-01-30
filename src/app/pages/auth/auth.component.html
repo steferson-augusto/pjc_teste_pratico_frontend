@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-card class="card mat-elevation-z2">
+    <mat-card-title>LOGIN</mat-card-title>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <mat-form-field>
+        <input matInput placeholder="Email" type="email" formControlName="email" required>
+        <!-- <mat-error [ngxErrors]="form.get('email')">
+          <span ngxError="required">Campo Obrigatório</span>
+        </mat-error> -->
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Senha" type="password" formControlName="password" required>
+        <!-- <mat-error [ngxErrors]="form.get('password')">
+          <span ngxError="required">Campo Obrigatório</span>
+        </mat-error> -->
+      </mat-form-field>
+      <!-- <app-error [error]="!!error">{{ error }}</app-error> -->
+      <button
+        mat-raised-button
+        color="primary"
+        [class.spinner]="loading"
+        [disabled]="loading"
+        type="submit"
+      >
+        Entrar
+      </button>
+    </form>
+  </mat-card>
+</div>
