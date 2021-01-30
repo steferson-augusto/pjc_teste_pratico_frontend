@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { CustomSnackbarService } from '../../template/custom-snackbar/custom-snackbar.service'
 
 import { Artist } from '../artist.model'
 import { ArtistService } from '../artist.service'
@@ -31,11 +32,12 @@ export class ArtistCreateComponent {
 export class DialogArtistCreate {
   constructor (
     private artistService: ArtistService,
-    public dialogRef: MatDialogRef<DialogArtistCreate>
+    public dialogRef: MatDialogRef<DialogArtistCreate>,
+    private snack: CustomSnackbarService
   ) {}
 
   loading = false
-  name = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(120)])
+  name = new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(120)])
   readonly errors = this.artistService.errors.name
   readonly validations = Object.keys(this.artistService.errors.name)
 
@@ -48,6 +50,7 @@ export class DialogArtistCreate {
     this.artistService.create(this.artist).subscribe(
       () => {
         this.loading = false
+        this.snack.open('Artista criado com sucesso')
         this.name.setValue('')
         this.artistService.emit()
         this.dialogRef.close()

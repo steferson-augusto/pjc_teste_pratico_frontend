@@ -9,7 +9,7 @@ import { CustomSnackbarComponent } from './custom-snackbar.component'
 export class CustomSnackbarService {
   constructor (private snackBar: MatSnackBar) { }
 
-  openSnackBar (text: string, action = '', icon = '', classes: undefined | string[] = undefined) {
+  open (text: string, action = '', icon = '', classes: undefined | string[] = undefined) {
     return this.snackBar.openFromComponent(CustomSnackbarComponent, {
       data: { text, action, icon },
       panelClass: classes,
