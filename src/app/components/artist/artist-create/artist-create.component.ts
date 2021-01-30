@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { formControlToError } from 'src/app/helpers/errors'
 import { CustomSnackbarService } from '../../template/custom-snackbar/custom-snackbar.service'
 
 import { Artist } from '../artist.model'
@@ -37,8 +38,8 @@ export class DialogArtistCreate {
   ) {}
 
   loading = false
-  name = new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(120)])
-  readonly errors = this.artistService.errors.name
+  name = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(120)])
+  errors = { ...this.artistService.errors.name, general: '' }
   readonly validations = Object.keys(this.artistService.errors.name)
 
   get artist () {
@@ -56,6 +57,7 @@ export class DialogArtistCreate {
         this.dialogRef.close()
       },
       ({ error }) => {
+        this.errors.general = formControlToError('name', this.name, error)
         this.loading = false
         console.error(error)
       }

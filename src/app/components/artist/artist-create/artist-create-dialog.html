@@ -6,6 +6,9 @@
       <span [ngxError]="validation">{{ errors[validation] }}</span>
     </mat-error>
   </mat-form-field>
+  <mat-error [ngxErrors]="name">
+    <span ngxError="general">{{ errors?.general }}</span>
+  </mat-error>
 </div>
 <div mat-dialog-actions>
   <div class="container-button">
