@@ -8,7 +8,7 @@ import { NgxErrorsModule } from '@ngspot/ngx-errors'
 
 import { AppRoutingModule } from './app-routing.module'
 import { httpInterceptorProviders } from './helpers/http-interceptors'
-import { MaterialModule } from './material.module'
+import { MaterialModule, paginatorPtBr } from './material/material.module'
 import { AppComponent } from './app.component'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
@@ -45,7 +45,7 @@ import { CustomSnackbarComponent } from './components/template/custom-snackbar/c
     MaterialModule,
     NgxErrorsModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, paginatorPtBr],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
