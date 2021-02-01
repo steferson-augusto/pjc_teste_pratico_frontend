@@ -19,6 +19,7 @@ import { AuthComponent } from './pages/auth/auth.component'
 import { ArtistListComponent } from './components/artist/artist-list/artist-list.component'
 import { ArtistCreateComponent, DialogArtistCreate } from './components/artist/artist-create/artist-create.component'
 import { CustomSnackbarComponent } from './components/template/custom-snackbar/custom-snackbar.component'
+import { ArtistDetailsComponent } from './components/artist/artist-details/artist-details.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CustomSnackbarComponent } from './components/template/custom-snackbar/c
     ArtistListComponent,
     ArtistCreateComponent,
     DialogArtistCreate,
-    CustomSnackbarComponent
+    CustomSnackbarComponent,
+    ArtistDetailsComponent
   ],
   imports: [
     BrowserModule,

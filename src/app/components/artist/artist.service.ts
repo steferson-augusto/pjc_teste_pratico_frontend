@@ -39,4 +39,16 @@ export class ArtistService {
     const query = `direction=${direction}&columnName=name&page=${page}&perPage=${perPage}&query=${artist}`
     return this.http.get<ArtistPagination>(`${this.baseUrl}?${query}`)
   }
+
+  getById (id: string): Observable<Artist> {
+    return this.http.get<Artist>(`${this.baseUrl}/${id}`)
+  }
+
+  update (artist: Artist): Observable<ArtistRequest> {
+    return this.http.put<ArtistRequest>(`${this.baseUrl}/${artist.id}`, artist)
+  }
+
+  delete (id: number): Observable<ArtistRequest> {
+    return this.http.delete<ArtistRequest>(`${this.baseUrl}/${id}`)
+  }
 }

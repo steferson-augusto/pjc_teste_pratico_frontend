@@ -1,0 +1,72 @@
+<!-- <app-loading [loading]="loading"></app-loading> -->
+<mat-card class="view-container mat-elevation-z2">
+  <mat-card-title>Artista
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Apagar artista"
+      (click)="handleDelete()"
+      matTooltip="Apagar artista e seus álbuns"
+      aria-label="Apagar artista e seus álbuns"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-title>
+  <form>
+    <mat-form-field>
+      <input
+        #inputName="matInput"
+        matInput placeholder="Nome do artista ou banda"
+        [formControl]="name" name="name"
+      >
+      <mat-error *ngFor="let validation of validations" [ngxErrors]="name">
+        <span [ngxError]="validation">{{ errors[validation] }}</span>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <mat-card *ngIf="artist.albums?.length > 0" class="mat-elevation-z1 card-albums">
+    <mat-card-title>Álbuns</mat-card-title>
+    <mat-nav-list>
+      <a mat-list-item href="/albums/{{ album.id }}" *ngFor="let album of artist.albums"> {{ album.name }} </a>
+   </mat-nav-list>
+  </mat-card>
+
+  <h3 class="without-album" *ngIf="artist.albums?.length == 0">Este artista não possui álbuns</h3>
+  <mat-error [ngxErrors]="name">
+    <span ngxError="general">{{ errors?.general }}</span>
+  </mat-error>
+  <button
+    *ngIf="!editing"
+    mat-raised-button
+    color="primary"
+    (click)="allowEdit()"
+    aria-label="Habilitar formulário para edição"
+    matTooltip="Habilitar formulário para edição"
+    matTooltipPosition="above"
+  >
+    Editar
+  </button>
+  <button
+    *ngIf="editing"
+    mat-button
+    (click)="cancelEdit()"
+    aria-label="Desfazer e cancelar alterações"
+    matTooltip="Desfazer e cancelar alterações"
+    matTooltipPosition="above"
+  >
+    Cancelar
+  </button>
+  <button
+    *ngIf="editing"
+    mat-raised-button
+    color="primary"
+    [disabled]="name.invalid || name.pristine"
+    (click)="update()"
+    aria-label="Salvar alterações"
+    matTooltip="Salvar alterações"
+    matTooltipPosition="above"
+  >
+    Salvar
+  </button>
+</mat-card>
