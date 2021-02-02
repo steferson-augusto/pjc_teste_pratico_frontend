@@ -21,7 +21,7 @@ export class ArtistDetailsComponent implements OnInit {
   validations = Object.keys(this.artistService.errors.name)
   name = new FormControl(
     { value: '', disabled: true },
-    [Validators.required, Validators.minLength(1), Validators.maxLength(120)]
+    [Validators.required, Validators.minLength(3), Validators.maxLength(120)]
   )
 
   constructor (
