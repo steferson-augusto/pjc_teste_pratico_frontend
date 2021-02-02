@@ -53,8 +53,6 @@ mat-error {
   line-height: 1.2;
 }
 
-
-
 .loading-shade {
   position: absolute;
   top: 0;
@@ -86,4 +84,8 @@ table {
 
 .mat-row:nth-child(odd) {
   background-color: rgba(0, 0, 0, .05);
+}
+
+.view-container {
+  margin-top: 16px;
 }
