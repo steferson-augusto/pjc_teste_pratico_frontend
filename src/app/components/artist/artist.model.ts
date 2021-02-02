@@ -1,18 +1,5 @@
 /* eslint-disable camelcase */
-export interface Image {
-  id?: number
-  name: string
-  album_id: number
-  url: string
-}
-
-export interface Album {
-  id?: number
-  name: string
-  artist_id?: number
-  year?: number
-  images?: Image[]
-}
+import { Album } from '../album/album.model'
 
 export interface Artist {
   id?: number
