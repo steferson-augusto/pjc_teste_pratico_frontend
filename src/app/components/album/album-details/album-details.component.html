@@ -38,6 +38,8 @@
     </mat-error>
   </form>
 
+  <app-image-list [data]="origin.images" [id]="origin.id" [editing]="editing"></app-image-list>
+
   <div class="container-buttons">
     <button
     *ngIf="!editing"

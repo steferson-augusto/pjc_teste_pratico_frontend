@@ -1,0 +1,43 @@
+.example-card {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  & > img {
+    max-width: 110px;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+  }
+}
+
+.card-images {
+  padding: 0;
+  margin-bottom: 15px;
+
+  mat-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--primary);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #efefef;
+    font-size: 1.1rem;
+  }
+}
+
+.without-image {
+  padding: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+#fileDropRef {
+  display: none;
+}

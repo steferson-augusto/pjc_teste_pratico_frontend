@@ -1,0 +1,40 @@
+<mat-card class="mat-elevation-z1 card-images">
+  <mat-card-title [class]="!data?.length ? 'without-image' : ''">Imagens de capa
+  <button
+    mat-mini-fab color="accent"
+    aria-label="Apagar esta imagem"
+    [disabled]="adding"
+    [class.spinner]="adding"
+  >
+    <label for="fileDropRef" matRipple>
+      <mat-icon>add_photo_alternate</mat-icon>
+    </label>
+  </button>
+  </mat-card-title>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template *ngFor="let image of data" carouselSlide>
+      <mat-card class="example-card mat-elevation-z2">
+        <img mat-card-image [src]="image.url" [alt]="image.name">
+        <mat-card-actions>
+          <button
+            mat-mini-fab color="warn" aria-label="Apagar esta imagem"
+            [disabled]="!editing || deleting.loading" (click)="delete(image.id)"
+            [class.spinner]="deleting.loading && deleting.id == image.id"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-template>
+  </owl-carousel-o>
+</mat-card>
+
+<input
+  type="file"
+  id="fileDropRef"
+  #fileDropRef
+  accept="image/png, image/jpeg"
+  [disabled]="adding"
+  (change)="fileBrowseHandler($event)"
+  multiple
+/>

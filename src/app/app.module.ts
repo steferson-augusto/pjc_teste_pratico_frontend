@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgxErrorsModule } from '@ngspot/ngx-errors'
+import { CarouselModule } from 'ngx-owl-carousel-o'
 
 import { AppRoutingModule } from './app-routing.module'
 import { httpInterceptorProviders } from './helpers/http-interceptors'
@@ -24,6 +25,7 @@ import { LoadingComponent } from './components/template/loading/loading.componen
 import { AlbumListComponent } from './components/album/album-list/album-list.component'
 import { AlbumCreateComponent, DialogAlbumCreate } from './components/album/album-create/album-create.component'
 import { AlbumDetailsComponent } from './components/album/album-details/album-details.component'
+import { ImageListComponent } from './components/image/image-list/image-list.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { AlbumDetailsComponent } from './components/album/album-details/album-de
     AlbumListComponent,
     AlbumCreateComponent,
     DialogAlbumCreate,
-    AlbumDetailsComponent
+    AlbumDetailsComponent,
+    ImageListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { AlbumDetailsComponent } from './components/album/album-details/album-de
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxErrorsModule
+    NgxErrorsModule,
+    CarouselModule
   ],
   providers: [httpInterceptorProviders, paginatorPtBr],
   bootstrap: [AppComponent]
