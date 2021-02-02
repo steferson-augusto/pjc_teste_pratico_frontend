@@ -9,9 +9,10 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root'
 })
 export class ArtistService {
-  constructor (
-    private http: HttpClient
-  ) { }
+  data: Artist[] = []
+  constructor (private http: HttpClient) {
+    this.all()
+  }
 
   static emitArtistCreated = new EventEmitter<boolean>()
 
@@ -28,6 +29,16 @@ export class ArtistService {
 
   emit (): void {
     ArtistService.emitArtistCreated.emit(true)
+  }
+
+  async all () {
+    try {
+      const data = await this.http.get<Artist[]>(this.baseUrl).toPromise()
+      this.data = data
+      return data
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   create (artist: Artist): Observable<ArtistRequest> {
