@@ -1,10 +1,5 @@
 /* eslint-disable camelcase */
-export interface Image {
-  id?: number
-  name: string
-  album_id: number
-  url: string
-}
+import { Image } from '../image/image.model'
 
 export interface Album {
   id?: number
