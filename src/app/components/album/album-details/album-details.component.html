@@ -1,0 +1,76 @@
+<app-loading [loading]="loading"></app-loading>
+<mat-card class="view-container mat-elevation-z2">
+  <mat-card-title>Álbum
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Apagar álbum"
+      (click)="handleDelete()"
+      matTooltip="Apagar álbum e suas imagens"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-title>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input #inputName="matInput" matInput placeholder="Nome do álbum" formControlName="name">
+      <mat-error *ngFor="let validation of validations.name" [ngxErrors]="form.get('name')">
+        <span [ngxError]="validation">{{ errors.name[validation] }}</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Ano" formControlName="year" type="number">
+      <mat-error *ngFor="let validation of validations.year" [ngxErrors]="form.get('year')">
+        <span [ngxError]="validation">{{ errors.year[validation] }}</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Artista</mat-label>
+      <mat-select formControlName="artist_id">
+        <mat-option *ngFor="let artist of artists" [value]="artist.id">
+          {{ artist.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-error *ngFor="let validation of validations.form" [ngxErrors]="form">
+      <span [ngxError]="validation">{{ errors.form[validation] }}</span>
+    </mat-error>
+  </form>
+
+  <div class="container-buttons">
+    <button
+    *ngIf="!editing"
+    mat-raised-button
+    color="primary"
+    (click)="allowEdit()"
+    aria-label="Habilitar formulário para edição"
+    matTooltip="Habilitar formulário para edição"
+    matTooltipPosition="above"
+  >
+    Editar
+  </button>
+  <button
+    *ngIf="editing"
+    mat-button
+    (click)="cancelEdit()"
+    aria-label="Desfazer e cancelar alterações"
+    matTooltip="Desfazer e cancelar alterações"
+    matTooltipPosition="above"
+  >
+    Cancelar
+  </button>
+  <button
+    *ngIf="editing"
+    mat-raised-button
+    color="primary"
+    [disabled]="form.invalid || form.pristine|| loading"
+    (click)="update()"
+    aria-label="Salvar alterações"
+    matTooltip="Salvar alterações"
+    matTooltipPosition="above"
+  >
+    Salvar
+  </button>
+  </div>
+</mat-card>

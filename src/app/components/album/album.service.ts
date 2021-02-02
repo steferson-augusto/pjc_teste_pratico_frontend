@@ -50,4 +50,16 @@ export class AlbumService {
   create (album: Album): Observable<AlbumRequest> {
     return this.http.post<AlbumRequest>(this.baseUrl, album)
   }
+
+  getById (id: string): Observable<Album> {
+    return this.http.get<Album>(`${this.baseUrl}/${id}`)
+  }
+
+  update (album: Album): Observable<AlbumRequest> {
+    return this.http.put<AlbumRequest>(`${this.baseUrl}/${album.id}`, album)
+  }
+
+  delete (id: number): Observable<AlbumRequest> {
+    return this.http.delete<AlbumRequest>(`${this.baseUrl}/${id}`)
+  }
 }

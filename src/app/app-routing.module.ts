@@ -9,6 +9,7 @@ import { UsersComponent } from './pages/users/users.component'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
 import { AuthComponent } from './pages/auth/auth.component'
 import { ArtistDetailsComponent } from './components/artist/artist-details/artist-details.component'
+import { AlbumDetailsComponent } from './components/album/album-details/album-details.component'
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'users', component: UsersComponent },
       { path: 'artists', component: ArtistsComponent },
       { path: 'artists/:id', component: ArtistDetailsComponent },
-      { path: 'albums', component: AlbumsComponent }
+      { path: 'albums', component: AlbumsComponent },
+      { path: 'albums/:id', component: AlbumDetailsComponent }
     ],
     canActivate: [AuthGuard]
   },

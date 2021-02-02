@@ -23,6 +23,7 @@ import { ArtistDetailsComponent } from './components/artist/artist-details/artis
 import { LoadingComponent } from './components/template/loading/loading.component'
 import { AlbumListComponent } from './components/album/album-list/album-list.component'
 import { AlbumCreateComponent, DialogAlbumCreate } from './components/album/album-create/album-create.component'
+import { AlbumDetailsComponent } from './components/album/album-details/album-details.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AlbumCreateComponent, DialogAlbumCreate } from './components/album/albu
     LoadingComponent,
     AlbumListComponent,
     AlbumCreateComponent,
-    DialogAlbumCreate
+    DialogAlbumCreate,
+    AlbumDetailsComponent
   ],
   imports: [
     BrowserModule,
