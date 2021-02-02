@@ -22,6 +22,7 @@ import { CustomSnackbarComponent } from './components/template/custom-snackbar/c
 import { ArtistDetailsComponent } from './components/artist/artist-details/artist-details.component'
 import { LoadingComponent } from './components/template/loading/loading.component'
 import { AlbumListComponent } from './components/album/album-list/album-list.component'
+import { AlbumCreateComponent, DialogAlbumCreate } from './components/album/album-create/album-create.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { AlbumListComponent } from './components/album/album-list/album-list.com
     CustomSnackbarComponent,
     ArtistDetailsComponent,
     LoadingComponent,
-    AlbumListComponent
+    AlbumListComponent,
+    AlbumCreateComponent,
+    DialogAlbumCreate
   ],
   imports: [
     BrowserModule,

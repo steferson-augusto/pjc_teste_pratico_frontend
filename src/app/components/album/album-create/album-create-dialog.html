@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Adicionar álbum</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Artista</mat-label>
+      <mat-select formControlName="artist_id">
+        <mat-option *ngFor="let artist of data" [value]="artist.id">
+          {{ artist.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngFor="let validation of validations.artist_id" [ngxErrors]="form.get('artist_id')">
+        <span [ngxError]="validation">{{ errors.artist_id[validation] }}</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Nome do álbum" formControlName="name">
+      <mat-error *ngFor="let validation of validations.name" [ngxErrors]="form.get('name')">
+        <span [ngxError]="validation">{{ errors.name[validation] }}</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Ano" formControlName="year" type="number">
+      <mat-error *ngFor="let validation of validations.year" [ngxErrors]="form.get('year')">
+        <span [ngxError]="validation">{{ errors.year[validation] }}</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngFor="let validation of validations.form" [ngxErrors]="form">
+      <span [ngxError]="validation">{{ errors.form[validation] }}</span>
+    </mat-error>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <div class="container-button">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button
+      mat-raised-button color="primary"
+      [disabled]="form.invalid || loading"
+      [class.spinner]="loading"
+      (click)="create()"
+    >
+    Adicionar
+  </button>
+  </div>
+</div>
+
