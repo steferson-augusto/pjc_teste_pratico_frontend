@@ -85,12 +85,17 @@ table {
   width: 100%;
 }
 
+.search {
+  padding: 10px 16px 0 16px;
+}
+
 .mat-row:nth-child(odd) {
   background-color: rgba(0, 0, 0, .05);
 }
 
 .view-container {
-  margin-top: 16px;
+  margin: 16px;
+  margin-top: 0;
 }
 
 .owl-stage {

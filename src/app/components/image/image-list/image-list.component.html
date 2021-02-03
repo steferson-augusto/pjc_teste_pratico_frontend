@@ -1,5 +1,6 @@
 <mat-card class="mat-elevation-z1 card-images">
-  <mat-card-title [class]="!data?.length ? 'without-image' : ''">Imagens de capa
+  <mat-card-title [class.without-image]="!data?.length">
+    {{ data?.length ? "Imagens de capa" : "Sem imagens de capa" }}
   <button
     mat-mini-fab color="accent"
     aria-label="Apagar esta imagem"

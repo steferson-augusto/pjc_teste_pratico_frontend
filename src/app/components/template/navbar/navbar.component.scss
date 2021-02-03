@@ -140,16 +140,14 @@ $query-small: 600px;
 
 .content{
   margin-left: 250px;
-  padding: 16px;
   padding-top: 64px;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 64px);
   transition: 0.5s;
+  overflow-y: auto;
 
   @media screen and (max-width: $query-small) {
     margin: 0;
-    padding: 16px;
     padding-top: 56px;
-    height: calc(100vh - 72px - 56px);
-    overflow-y: auto;
+    height: calc(100vh - 56px - 56px);
   }
 }
