@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
@@ -7,26 +8,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgxErrorsModule } from '@ngspot/ngx-errors'
 import { CarouselModule } from 'ngx-owl-carousel-o'
 
+import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { TemplateModule } from './components/template/template.module'
 import { AlbumModule } from './components/album/album.module'
 import { httpInterceptorProviders } from './helpers/http-interceptors'
 import { MaterialModule, paginatorPtBr } from './material/material.module'
-import { AppComponent } from './app.component'
 import { AuthComponent } from './pages/auth/auth.component'
-import { ProfileComponent as ProfilePageComponent } from './pages/profile/profile.component'
-import { ProfileComponent } from './components/profile/profile.component'
-import { DialogChangePasswordComponent } from './components/profile/dialog-change-password/dialog-change-password.component'
-import { RouterModule } from '@angular/router'
 import { ArtistModule } from './components/artist/artist.module'
+import { ProfileModule } from './components/profile/profile.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    ProfilePageComponent,
-    ProfileComponent,
-    DialogChangePasswordComponent
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +37,7 @@ import { ArtistModule } from './components/artist/artist.module'
     CarouselModule,
     AlbumModule,
     ArtistModule,
+    ProfileModule,
     TemplateModule
   ],
   providers: [httpInterceptorProviders, paginatorPtBr],
