@@ -77,7 +77,7 @@ mat-error {
 
 .table-container {
   position: relative;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 310px);
   overflow: auto;
 }
 
@@ -86,7 +86,18 @@ table {
 }
 
 .search {
-  padding: 10px 16px 0 16px;
+  padding: 8px 16px 0 16px;
+}
+
+.paginator {
+  .mat-paginator-range-label {
+    margin: 0 12px;
+  }
+}
+mat-cell, .mat-cell,
+mat-footer-cell, .mat-footer-cell,
+mat-header-cell .mat-header-cell {
+  padding-right: 0.4rem !important;
 }
 
 .mat-row:nth-child(odd) {
@@ -94,8 +105,16 @@ table {
 }
 
 .view-container {
-  margin: 16px;
+  margin: 12px;
   margin-top: 0;
+}
+
+.container-button-add {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding-bottom: 8px;
 }
 
 .owl-stage {

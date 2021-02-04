@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core'
+import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
@@ -12,7 +12,8 @@ import { AlbumService } from '../album.service'
 @Component({
   selector: 'app-album-list',
   templateUrl: './album-list.component.html',
-  styleUrls: ['./album-list.component.scss']
+  styleUrls: ['./album-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AlbumListComponent implements AfterViewInit {
   albums: AlbumPagination

@@ -3,33 +3,19 @@
   min-height: 200px;
 }
 
-.table-container {
-  position: relative;
-  max-height: 400px;
-  overflow: auto;
-}
-
-table {
-  width: 100%;
-}
-
 /* Column Widths */
 .mat-column-id, .mat-column-action, .mat-column-year {
   max-width: 40px;
-  padding: 0 4px;
 }
 
 .mat-column-year {
   max-width: 64px;
-  padding: 0 4px;
-}
-
-.mat-column-name {
-  max-width: 100%;
-  padding: 0 4px;
 }
 
 .mat-column-artist {
   max-width: 120px;
-  padding: 0 4px;
+}
+
+.mat-column-name {
+  max-width: 100%;
 }

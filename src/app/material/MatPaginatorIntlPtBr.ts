@@ -3,7 +3,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator'
 
 @Injectable()
 export class MatPaginatorIntlPtBr extends MatPaginatorIntl {
-  itemsPerPageLabel = 'Itens por página';
+  itemsPerPageLabel = 'Por página';
   nextPageLabel = 'Próximo';
   previousPageLabel = 'Anterior';
 

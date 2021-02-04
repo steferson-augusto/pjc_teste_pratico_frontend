@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core'
+import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
@@ -12,7 +12,8 @@ import { ArtistService } from '../artist.service'
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.scss']
+  styleUrls: ['./artist-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ArtistListComponent implements AfterViewInit {
   artists: ArtistPagination
