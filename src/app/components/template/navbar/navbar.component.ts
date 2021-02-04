@@ -11,7 +11,8 @@ export class NavbarComponent {
   constructor (private route: ActivatedRoute, private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.title = this.route.snapshot.firstChild.data.title ?? ''
+        const data = this.route?.snapshot?.firstChild?.firstChild?.firstChild?.data
+        this.title = data?.title ?? ''
       }
     })
   }
