@@ -14,13 +14,14 @@ const routes: Routes = [
   {
     path: '',
     component: NavbarComponent,
+    data: { title: 'teste' },
     children: [
       { path: '', redirectTo: '/albums', pathMatch: 'full' },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'artists', component: ArtistsComponent },
-      { path: 'artists/:id', component: ArtistDetailsComponent },
-      { path: 'albums', component: AlbumsComponent },
-      { path: 'albums/:id', component: AlbumDetailsComponent }
+      { path: 'profile', component: ProfileComponent, data: { title: 'Perfil' } },
+      { path: 'artists', component: ArtistsComponent, data: { title: 'Artistas' } },
+      { path: 'artists/:id', component: ArtistDetailsComponent, data: { title: 'Artista' } },
+      { path: 'albums', component: AlbumsComponent, data: { title: 'Álbuns' } },
+      { path: 'albums/:id', component: AlbumDetailsComponent, data: { title: 'Álbum' } }
     ],
     canActivate: [AuthGuard]
   },
