@@ -12,7 +12,6 @@ import { httpInterceptorProviders } from './helpers/http-interceptors'
 import { MaterialModule, paginatorPtBr } from './material/material.module'
 import { AppComponent } from './app.component'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
-import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { ArtistsComponent } from './pages/artists/artists.component'
 import { AlbumsComponent } from './pages/albums/albums.component'
 import { AuthComponent } from './pages/auth/auth.component'
@@ -33,7 +32,6 @@ import { DialogChangePasswordComponent } from './components/profile/dialog-chang
   declarations: [
     AppComponent,
     NavbarComponent,
-    DashboardComponent,
     ArtistsComponent,
     AlbumsComponent,
     AuthComponent,
