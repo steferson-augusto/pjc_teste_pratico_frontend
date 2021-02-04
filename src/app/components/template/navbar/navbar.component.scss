@@ -3,6 +3,7 @@
 
 $sidebar-color: #E5E5E5;
 $sidebar-hover: #D5D5D5;
+$link-background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
 
 .header {
   position: fixed;
@@ -94,11 +95,19 @@ $sidebar-hover: #D5D5D5;
       }
     }
 
-    &:hover{
+    &:hover {
       background: $sidebar-hover;
 
       @media screen and (max-width: $query-small) {
-        background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
+        background: $link-background;
+      }
+    }
+
+    &.active {
+      background: darken($sidebar-hover, 5%);
+
+      @media screen and (max-width: $query-small) {
+        background: darken($link-background, 7%);
       }
     }
 
