@@ -3,18 +3,18 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 
 import { formToError } from 'src/app/helpers/errors'
-import { CustomSnackbarService } from '../template/custom-snackbar/custom-snackbar.service'
-import { DialogChangePasswordComponent } from './dialog-change-password/dialog-change-password.component'
-import { Profile } from './profile.model'
+import { CustomSnackbarService } from '../../template/custom-snackbar/custom-snackbar.service'
+import { DialogChangePasswordComponent } from '../dialog-change-password/dialog-change-password.component'
+import { Profile } from '../profile.model'
 
-import { ProfileService } from './profile.service'
+import { ProfileService } from '../profile.service'
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileEditComponent implements OnInit {
   form: FormGroup
   profile: Profile
   validations = this.profileService.validations
