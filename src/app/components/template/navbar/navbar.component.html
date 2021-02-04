@@ -1,26 +1,28 @@
-<input type="checkbox" id="check">
+<div class="body">
+  <mat-toolbar color="primary" class="header mat-elevation-z2">
+    <button mat-icon-button aria-label="Home" class="btn-menu">
+      <label for="check" class="btn-menu">
+        <mat-icon>menu</mat-icon>
+      </label>
+    </button>
+    <span routerLink="/">PJC - Frontend</span>
+    <span>
+      <a>
+        <i class="material-icons">chevron_right</i>
+        {{ title }}
+      </a>
+    </span>
+  </mat-toolbar>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <nav class="sidebar">
+      <a routerLink="/albums" [routerLinkActive]="['active']"><i class="material-icons">library_music</i><span>Álbuns</span></a>
+      <a routerLink="/artists" [routerLinkActive]="['active']"><i class="material-icons">mic</i><span>Artistas</span></a>
+      <a routerLink="/profile" [routerLinkActive]="['active']"><i class="material-icons">account_circle</i><span>Perfil</span></a>
+    </nav>
 
-<mat-toolbar color="primary" class="header mat-elevation-z2">
-  <button mat-icon-button aria-label="Home" class="btn-menu">
-    <label for="check" class="btn-menu">
-      <mat-icon>menu</mat-icon>
-    </label>
-  </button>
-  <span routerLink="/">PJC - Frontend</span>
-  <span>
-    <a>
-      <i class="material-icons">chevron_right</i>
-      {{ title }}
-    </a>
-  </span>
-</mat-toolbar>
-
-<nav class="sidebar">
-  <a routerLink="/albums" [routerLinkActive]="['active']"><i class="material-icons">library_music</i><span>Álbuns</span></a>
-  <a routerLink="/artists" [routerLinkActive]="['active']"><i class="material-icons">mic</i><span>Artistas</span></a>
-  <a routerLink="/profile" [routerLinkActive]="['active']"><i class="material-icons">account_circle</i><span>Perfil</span></a>
-</nav>
-
-<main class="content">
-  <router-outlet></router-outlet>
-</main>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -5,44 +5,61 @@ $sidebar-color: #E5E5E5;
 $sidebar-hover: #D5D5D5;
 $link-background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
 
-.header {
-  position: fixed;
-  top: 0;
-  z-index: 10;
-
-  span > a {
-    display: flex;
-    align-items: center;
-  }
-}
-
-.btn-menu {
+.body {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 
-  @media screen and (max-width: $query-small) {
-    display: none;
+  .header {
+    z-index: 10;
+    text-align: center;
+
+    .btn-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media screen and (max-width: $query-small) {
+        display: none;
+      }
+    }
+
+    span > a {
+      display: flex;
+      align-items: center;
+    }
+
+    @media screen and (max-width: $query-small) {
+      text-align: center;
+    }
+  }
+
+  .container {
+    width: 100%;
+    max-height: calc(100vh - 64px);
+    flex: 1;
+    display: flex;
+    z-index: 9;
+
+    @media screen and (max-width: $query-small) {
+      max-height: calc(100vh - 56px);
+      flex-direction: column-reverse;
+    }
   }
 }
 
 .sidebar {
   background: $sidebar-color;
-  position: fixed;
   width: 250px;
   height: 100%;
-  margin-top: 64px;
   transition: 0.5s;
   transition-property: left;
   overflow-y: auto;
-  z-index: 9;
 
   @media screen and (max-width: $query-small) {
     width: 100%;
     height: 56px;
-    margin-top: 0;
-    bottom: 0;
-    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -126,36 +143,27 @@ $link-background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
     display: none;
 
     &:checked ~ .sidebar{
-      left: -190px;
+      width: 80px;
+      text-align: center;
 
       a{
-        height: 60px;
+        height: 56px;
+        justify-content: center;
         font-size: 20px;
-        margin-left: 170px;
         width: 80px;
+        padding: 0;
 
         span{
           display: none;
         }
       }
     }
-
-    &:checked ~ .content{
-      margin-left: 60px;
-    }
   }
 }
 
 .content{
-  margin-left: 250px;
-  padding-top: 64px;
-  height: calc(100vh - 64px);
+  width: 100%;
+  flex: 1;
   transition: 0.5s;
   overflow-y: auto;
-
-  @media screen and (max-width: $query-small) {
-    margin: 0;
-    padding-top: 56px;
-    height: calc(100vh - 56px - 56px);
-  }
 }
