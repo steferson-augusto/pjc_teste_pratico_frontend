@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router'
 import { AuthGuard } from './pages/auth/auth.guard'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
 import { AuthComponent } from './pages/auth/auth.component'
-import { ProfileComponent } from './pages/profile/profile.component'
 
 const routes: Routes = [
   {
@@ -12,7 +11,11 @@ const routes: Routes = [
     component: NavbarComponent,
     children: [
       { path: '', redirectTo: '/albums', pathMatch: 'full' },
-      { path: 'profile', component: ProfileComponent, data: { title: 'Perfil' } },
+      {
+        path: 'profile',
+        loadChildren: () => import('./components/profile/profile.module').then(m => m.ProfileModule),
+        canLoad: [AuthGuard]
+      },
       {
         path: 'artists',
         loadChildren: () => import('./components/artist/artist.module').then(m => m.ArtistModule),
