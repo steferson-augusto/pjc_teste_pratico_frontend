@@ -1,0 +1,39 @@
+@import '/src/theme.scss';
+
+.container {
+  width: 100%;
+  height: calc(100% - 4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .form-user {
+    padding: 16px;
+
+    .user-buttons {
+      padding-top: 12px;
+      & > button {
+        margin-right: 16px;
+      }
+
+      .changePassword {
+        @media screen and (max-width: $query-small) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.container-buttons-mobile {
+  width: 100%;
+  display: none;
+  @media screen and (max-width: $query-small) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    margin: 4px 16px 16px 8px;
+  }
+}

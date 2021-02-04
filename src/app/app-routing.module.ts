@@ -5,11 +5,11 @@ import { AuthGuard } from './pages/auth/auth.guard'
 import { AlbumsComponent } from './pages/albums/albums.component'
 import { ArtistsComponent } from './pages/artists/artists.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
-import { UsersComponent } from './pages/users/users.component'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
 import { AuthComponent } from './pages/auth/auth.component'
 import { ArtistDetailsComponent } from './components/artist/artist-details/artist-details.component'
 import { AlbumDetailsComponent } from './components/album/album-details/album-details.component'
+import { ProfileComponent } from './pages/profile/profile.component'
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     component: NavbarComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'users', component: UsersComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'artists', component: ArtistsComponent },
       { path: 'artists/:id', component: ArtistDetailsComponent },
       { path: 'albums', component: AlbumsComponent },

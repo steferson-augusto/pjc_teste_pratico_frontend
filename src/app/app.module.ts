@@ -13,7 +13,6 @@ import { MaterialModule, paginatorPtBr } from './material/material.module'
 import { AppComponent } from './app.component'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
-import { UsersComponent } from './pages/users/users.component'
 import { ArtistsComponent } from './pages/artists/artists.component'
 import { AlbumsComponent } from './pages/albums/albums.component'
 import { AuthComponent } from './pages/auth/auth.component'
@@ -26,13 +25,15 @@ import { AlbumListComponent } from './components/album/album-list/album-list.com
 import { AlbumCreateComponent, DialogAlbumCreate } from './components/album/album-create/album-create.component'
 import { AlbumDetailsComponent } from './components/album/album-details/album-details.component'
 import { ImageListComponent } from './components/image/image-list/image-list.component'
+import { ProfileComponent as ProfilePageComponent } from './pages/profile/profile.component'
+import { ProfileComponent } from './components/profile/profile.component'
+import { DialogChangePasswordComponent } from './components/profile/dialog-change-password/dialog-change-password.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DashboardComponent,
-    UsersComponent,
     ArtistsComponent,
     AlbumsComponent,
     AuthComponent,
@@ -46,7 +47,10 @@ import { ImageListComponent } from './components/image/image-list/image-list.com
     AlbumCreateComponent,
     DialogAlbumCreate,
     AlbumDetailsComponent,
-    ImageListComponent
+    ImageListComponent,
+    ProfilePageComponent,
+    ProfileComponent,
+    DialogChangePasswordComponent
   ],
   imports: [
     BrowserModule,

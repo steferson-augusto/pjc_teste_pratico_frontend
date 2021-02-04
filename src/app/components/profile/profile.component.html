@@ -1,0 +1,38 @@
+<app-loading [loading]="loading" color="accent"></app-loading>
+<div class="container">
+  <div class="content">
+    <form [formGroup]="form" class="form-user" (ngSubmit)="update()">
+      <mat-form-field>
+        <input matInput type="email" placeholder="Email" formControlName="email" readonly>
+        <mat-error *ngFor="let validation of validations.email" [ngxErrors]="form.get('email')">
+          <span [ngxError]="validation">{{ errors.email[validation] }}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="name">
+        <mat-error *ngFor="let validation of validations.name" [ngxErrors]="form.get('name')">
+          <span [ngxError]="validation">{{ errors.name[validation] }}</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="user-buttons">
+        <button mat-raised-button [disabled]="form.invalid || form.pristine || loading" type="submit" color="primary">
+          Salvar
+        </button>
+        <button
+          mat-stroked-button
+          class="changePassword"
+          type="button"
+          color="accent"
+          (click)="changePassword()"
+        >
+          Trocar senha
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="container-buttons-mobile">
+    <button mat-stroked-button color="accent" (click)="changePassword()">TROCAR SENHA</button>
+    <button mat-stroked-button color="warn">SAIR</button>
+  </div>
+</div>
