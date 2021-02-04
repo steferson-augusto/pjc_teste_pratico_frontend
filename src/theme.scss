@@ -1,6 +1,7 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
+$query-small: 600px;
 $my-app-primary: mat-palette($mat-indigo);
 $my-app-accent:  mat-palette($mat-indigo, 400, 900, A100);
 $my-app-warn:    mat-palette($mat-red);
