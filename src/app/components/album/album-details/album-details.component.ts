@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { MatInput } from '@angular/material/input'
+import { AnimationOptions } from 'ngx-lottie'
 
 import { Album } from '../album.model'
 import { AlbumService } from '../album.service'
@@ -28,6 +29,7 @@ export class AlbumDetailsComponent implements OnInit {
   artists: Artist[] = []
   images: Image[] = []
   origin: Album = { name: '', year: null, artist_id: 0 }
+  animation: AnimationOptions = { path: '/assets/animations/404-not-found-page.json' }
 
   constructor (
     private albumService: AlbumService,
@@ -41,6 +43,7 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   @ViewChild('inputName', { static: false }) inputName: MatInput
+  error = false
 
   async ngOnInit () {
     this.form = this.formBuilder.group({
@@ -56,6 +59,11 @@ export class AlbumDetailsComponent implements OnInit {
         this.images = album.images.map(image => ({ path: image.url }))
         this.loading = false
         this.origin = { ...album }
+      },
+      error => {
+        this.loading = false
+        console.error(error)
+        this.error = true
       }
     )
     this.artists = await this.artistService.all()

@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { NgxErrorsModule } from '@ngspot/ngx-errors'
 import { CarouselModule } from 'ngx-owl-carousel-o'
+import { LottieModule } from 'ngx-lottie'
 
 import { AlbumRoutingModule } from './album.routing.module'
 import { AlbumService } from './album.service'
@@ -15,6 +16,10 @@ import { ImageService } from '../image/image.service'
 import { MaterialModule } from 'src/app/material/material.module'
 import { TemplateModule } from '../template/template.module'
 
+export function playerFactory () {
+  return import('lottie-web')
+}
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +29,8 @@ import { TemplateModule } from '../template/template.module'
     MaterialModule,
     NgxErrorsModule,
     CarouselModule,
-    TemplateModule
+    TemplateModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   exports: [],
   declarations: [

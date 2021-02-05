@@ -1,5 +1,5 @@
 <app-loading [loading]="loading" color="accent"></app-loading>
-<mat-card class="view-container mat-elevation-z2">
+<mat-card class="view-container mat-elevation-z2" *ngIf="!error">
   <mat-card-title>Álbum
     <button
       mat-mini-fab
@@ -76,3 +76,8 @@
   </button>
   </div>
 </mat-card>
+
+<div class="animation" *ngIf="error">
+  <ng-lottie width="80%" height="80%" style="margin-left: 10%;" [options]="animation"></ng-lottie>
+  <h2>Não encontramos o álbum desejado</h2>
+</div>

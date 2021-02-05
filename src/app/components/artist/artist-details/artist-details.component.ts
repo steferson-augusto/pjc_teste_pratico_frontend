@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { FormControl, Validators } from '@angular/forms'
 import { MatInput } from '@angular/material/input'
+import { AnimationOptions } from 'ngx-lottie'
 
 import { Artist } from '../artist.model'
 import { ArtistService } from '../artist.service'
@@ -14,6 +15,8 @@ import { formControlToError } from 'src/app/helpers/errors'
   styleUrls: ['./artist-details.component.scss']
 })
 export class ArtistDetailsComponent implements OnInit {
+  animation: AnimationOptions = { path: '/assets/animations/404-not-found-page.json' }
+  error = false
   loading = false
   artist: Artist = { name: '' }
   private origin: Artist = { name: '' }
@@ -41,6 +44,11 @@ export class ArtistDetailsComponent implements OnInit {
         this.name.setValue(artist.name)
         this.loading = false
         this.origin = { ...artist }
+      },
+      error => {
+        this.loading = false
+        console.error(error)
+        this.error = true
       }
     )
   }

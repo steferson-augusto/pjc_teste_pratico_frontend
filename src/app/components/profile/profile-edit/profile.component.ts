@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
+import { AnimationOptions } from 'ngx-lottie'
 
 import { formToError } from 'src/app/helpers/errors'
 import { CustomSnackbarService } from '../../template/custom-snackbar/custom-snackbar.service'
@@ -15,6 +16,8 @@ import { ProfileService } from '../profile.service'
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileEditComponent implements OnInit {
+  animation: AnimationOptions = { path: '/assets/animations/404-not-found-page.json' }
+  error = false
   form: FormGroup
   profile: Profile
   validations = this.profileService.validations
@@ -85,5 +88,9 @@ export class ProfileEditComponent implements OnInit {
         this.snack.open(message, '', 'done', ['success'])
       }
     })
+  }
+
+  logout () {
+    this.snack.open('Esse é um teste', '', 'done', ['success'])
   }
 }

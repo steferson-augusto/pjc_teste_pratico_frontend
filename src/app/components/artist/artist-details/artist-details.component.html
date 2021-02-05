@@ -1,5 +1,5 @@
 <app-loading [loading]="loading"></app-loading>
-<mat-card class="view-container mat-elevation-z2">
+<mat-card class="view-container mat-elevation-z2" *ngIf="!error">
   <mat-card-title>Artista
     <button
       mat-mini-fab
@@ -70,3 +70,8 @@
     Salvar
   </button>
 </mat-card>
+
+<div class="animation" *ngIf="error">
+  <ng-lottie width="80%" height="80%" style="margin-left: 10%;" [options]="animation"></ng-lottie>
+  <h2>Não encontramos o artista desejado</h2>
+</div>

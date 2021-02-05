@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { NgxErrorsModule } from '@ngspot/ngx-errors'
+import { LottieModule } from 'ngx-lottie'
 
 import { MaterialModule } from 'src/app/material/material.module'
 import { TemplateModule } from '../template/template.module'
@@ -11,6 +12,10 @@ import { ProfileEditComponent } from './profile-edit/profile.component'
 import { DialogChangePasswordComponent } from './dialog-change-password/dialog-change-password.component'
 import { ProfileService } from './profile.service'
 
+export function playerFactory () {
+  return import('lottie-web')
+}
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +24,8 @@ import { ProfileService } from './profile.service'
     ReactiveFormsModule,
     MaterialModule,
     NgxErrorsModule,
-    TemplateModule
+    TemplateModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   exports: [],
   declarations: [

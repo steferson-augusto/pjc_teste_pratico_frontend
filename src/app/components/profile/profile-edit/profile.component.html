@@ -1,5 +1,5 @@
 <app-loading [loading]="loading" color="accent"></app-loading>
-<div class="container">
+<div class="container" *ngIf="!error">
   <div class="content">
     <form [formGroup]="form" class="form-user" (ngSubmit)="update()">
       <mat-form-field>
@@ -33,6 +33,11 @@
   </div>
   <div class="container-buttons-mobile">
     <button mat-stroked-button color="accent" (click)="changePassword()">TROCAR SENHA</button>
-    <button mat-stroked-button color="warn">SAIR</button>
+    <button mat-stroked-button color="warn" (click)="logout()">SAIR</button>
   </div>
+</div>
+
+<div class="animation" *ngIf="error">
+  <ng-lottie width="80%" height="80%" style="margin-left: 10%;" [options]="animation"></ng-lottie>
+  <h2>Não foi possível acessar os seus dados</h2>
 </div>

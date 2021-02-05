@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { NgxErrorsModule } from '@ngspot/ngx-errors'
+import { LottieModule } from 'ngx-lottie'
 
 import { MaterialModule } from 'src/app/material/material.module'
 import { TemplateModule } from '../template/template.module'
@@ -12,6 +13,10 @@ import { ArtistListComponent } from './artist-list/artist-list.component'
 import { ArtistCreateComponent, DialogArtistCreate } from './artist-create/artist-create.component'
 import { ArtistDetailsComponent } from './artist-details/artist-details.component'
 
+export function playerFactory () {
+  return import('lottie-web')
+}
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +25,8 @@ import { ArtistDetailsComponent } from './artist-details/artist-details.componen
     ReactiveFormsModule,
     MaterialModule,
     NgxErrorsModule,
-    TemplateModule
+    TemplateModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   exports: [],
   declarations: [
