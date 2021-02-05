@@ -21,8 +21,8 @@ export class AuthComponent implements OnInit {
 
   ngOnInit (): void {
     this.form = this.formBuilder.group({
-      email: ['superuser@email.com', [Validators.required]],
-      password: ['aIJUyry6D7wZleDm', [Validators.required]]
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     })
   }
 
