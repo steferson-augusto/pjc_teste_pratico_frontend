@@ -1,4 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ReactiveFormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MaterialModule } from 'src/app/material/material.module'
+import { ProfileService } from '../profile.service'
 
 import { ProfileEditComponent } from './profile.component'
 
@@ -8,6 +13,8 @@ describe('ProfileEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, HttpClientTestingModule, MaterialModule, BrowserAnimationsModule],
+      providers: [ProfileService],
       declarations: [ProfileEditComponent]
     })
       .compileComponents()
@@ -19,7 +26,7 @@ describe('ProfileEditComponent', () => {
     fixture.detectChanges()
   })
 
-  it('should create', () => {
+  it('Deve ser criado', () => {
     expect(component).toBeTruthy()
   })
 })

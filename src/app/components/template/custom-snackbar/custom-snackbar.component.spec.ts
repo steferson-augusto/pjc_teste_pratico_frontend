@@ -1,25 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar'
 
-import { CustomSnackbarComponent } from './custom-snackbar.component';
+import { CustomSnackbarComponent } from './custom-snackbar.component'
 
 describe('CustomSnackbarComponent', () => {
-  let component: CustomSnackbarComponent;
-  let fixture: ComponentFixture<CustomSnackbarComponent>;
+  let component: CustomSnackbarComponent
+  let fixture: ComponentFixture<CustomSnackbarComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomSnackbarComponent ]
+      declarations: [CustomSnackbarComponent],
+      providers: [
+        { provide: MatSnackBarRef, useValue: {} },
+        { provide: MAT_SNACK_BAR_DATA, useValue: {} }
+      ]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomSnackbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(CustomSnackbarComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it('Deve ser criado', () => {
+    expect(component).toBeTruthy()
+  })
+})
