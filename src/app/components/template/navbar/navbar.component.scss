@@ -14,6 +14,8 @@ $link-background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
   .header {
     z-index: 10;
     text-align: center;
+    display: flex;
+    align-items: center;
 
     .btn-menu {
       display: flex;
@@ -23,6 +25,10 @@ $link-background: mat-color(mat-palette($mat-indigo, 700, 900, A100));
       @media screen and (max-width: $query-small) {
         display: none;
       }
+    }
+
+    .space {
+      flex: 1;
     }
 
     span > a {
