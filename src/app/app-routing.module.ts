@@ -10,7 +10,6 @@ const routes: Routes = [
     path: '',
     component: NavbarComponent,
     children: [
-      { path: '', redirectTo: '/albums', pathMatch: 'full' },
       {
         path: 'profile',
         loadChildren: () => import('./components/profile/profile.module').then(m => m.ProfileModule),
@@ -25,12 +24,14 @@ const routes: Routes = [
         path: 'albums',
         loadChildren: () => import('./components/album/album.module').then(m => m.AlbumModule),
         canLoad: [AuthGuard]
-      }
+      },
+      { path: '', pathMatch: 'full', redirectTo: '/albums' }
     ],
     canActivate: [AuthGuard]
   },
+  { path: 'login', component: AuthComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: AuthComponent }
+  { path: '**', redirectTo: '/albums' }
 ]
 
 @NgModule({
