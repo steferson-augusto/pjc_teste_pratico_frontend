@@ -12,7 +12,7 @@ export class NavbarComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const data = this.route?.snapshot?.firstChild?.firstChild?.firstChild?.data
-        this.title = data?.title ?? ''
+        this.title = data?.title ?? '404'
       }
     })
   }
