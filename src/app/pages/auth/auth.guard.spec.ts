@@ -1,16 +1,57 @@
-import { TestBed } from '@angular/core/testing';
+// import { TestBed } from '@angular/core/testing'
 
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth.guard'
+
+class MockRouter {
+  navigate (path) {}
+}
 
 describe('AuthGuard', () => {
-  let guard: AuthGuard;
+  describe('canActivate', () => {
+    let authGuard: AuthGuard
+    let authService
+    let router
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(AuthGuard);
-  });
+    it('Deve retornar true se usuário estiver logado', () => {
+      authService = { isUserLoggedIn: () => true }
+      router = new MockRouter()
+      authGuard = new AuthGuard(authService, router)
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
-});
+      expect(authGuard.canActivate()).toEqual(true)
+    })
+
+    it('Deve navegar para login caso usuário não esteja logado', () => {
+      authService = { isUserLoggedIn: () => false }
+      router = new MockRouter()
+      authGuard = new AuthGuard(authService, router)
+      spyOn(router, 'navigate')
+
+      expect(authGuard.canActivate()).toEqual(false)
+      expect(router.navigate).toHaveBeenCalledWith(['login'])
+    })
+  })
+
+  describe('canLoad', () => {
+    let authGuard: AuthGuard
+    let authService
+    let router
+
+    it('Deve retornar true se usuário estiver logado', () => {
+      authService = { isUserLoggedIn: () => true }
+      router = new MockRouter()
+      authGuard = new AuthGuard(authService, router)
+
+      expect(authGuard.canLoad()).toEqual(true)
+    })
+
+    it('Deve navegar para login caso usuário não esteja logado', () => {
+      authService = { isUserLoggedIn: () => false }
+      router = new MockRouter()
+      authGuard = new AuthGuard(authService, router)
+      spyOn(router, 'navigate')
+
+      expect(authGuard.canLoad()).toEqual(false)
+      expect(router.navigate).toHaveBeenCalledWith(['login'])
+    })
+  })
+})
