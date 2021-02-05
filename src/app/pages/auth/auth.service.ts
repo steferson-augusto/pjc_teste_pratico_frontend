@@ -10,9 +10,10 @@ import { environment } from 'src/environments/environment'
 })
 export class AuthService {
   constructor (private http: HttpClient) { }
+  baseUrl = `${environment.baseUrl}/login`
 
   login (data: UserLogin) {
-    return this.http.post<LoginRequest>(`${environment.baseUrl}/login`, data)
+    return this.http.post<LoginRequest>(this.baseUrl, data)
   }
 
   getAuthorizationToken () {
@@ -26,15 +27,20 @@ export class AuthService {
   }
 
   getTokenExpirationDate (token: string): Date {
-    const decoded: any = jwtDecode(token)
+    try {
+      const decoded: any = jwtDecode(token)
 
-    if (decoded.exp === undefined) {
+      if (decoded.exp === undefined) {
+        return null
+      }
+
+      const date = new Date(0)
+      date.setUTCSeconds(decoded.exp)
+      return date
+    } catch (error) {
+      console.error(error)
       return null
     }
-
-    const date = new Date(0)
-    date.setUTCSeconds(decoded.exp)
-    return date
   }
 
   isTokenExpired (token?: string): boolean {
@@ -47,18 +53,16 @@ export class AuthService {
       return false
     }
 
-    return !(date.valueOf() > new Date().valueOf())
+    return !(date?.valueOf() > new Date().valueOf())
   }
 
   isUserLoggedIn () {
     const token = this.getAuthorizationToken()
     if (!token) {
       return false
-    } else if (this.isTokenExpired(token)) {
-      return false
     }
 
-    return true
+    return !this.isTokenExpired(token)
   }
 
   saveToken (token: any) {
@@ -68,7 +72,7 @@ export class AuthService {
   refreshToken () {
     const result = window.localStorage.getItem('@TESTE-PRATICO:token')
     const { refreshToken } = JSON.parse(result)
-    return this.http.post<any>(`${environment.baseUrl}/login`, { refreshToken })
+    return this.http.post<any>(this.baseUrl, { refreshToken })
   }
 
   logout () {
