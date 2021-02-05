@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
+import { Router } from '@angular/router'
 import { AnimationOptions } from 'ngx-lottie'
 
 import { formToError } from 'src/app/helpers/errors'
+import { AuthService } from 'src/app/pages/auth/auth.service'
 import { CustomSnackbarService } from '../../template/custom-snackbar/custom-snackbar.service'
 import { DialogChangePasswordComponent } from '../dialog-change-password/dialog-change-password.component'
 import { Profile } from '../profile.model'
@@ -26,7 +28,9 @@ export class ProfileEditComponent implements OnInit {
   constructor (
     private formBuilder: FormBuilder,
     private profileService: ProfileService,
+    private authService: AuthService,
     private snack: CustomSnackbarService,
+    private router: Router,
     public dialog: MatDialog
   ) { }
 
@@ -91,6 +95,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   logout () {
-    this.snack.open('Esse é um teste', '', 'done', ['success'])
+    this.authService.logout()
+    this.router.navigate(['/login'])
   }
 }
