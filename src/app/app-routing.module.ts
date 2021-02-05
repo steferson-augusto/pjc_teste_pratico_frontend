@@ -5,7 +5,7 @@ import { AuthGuard } from './pages/auth/auth.guard'
 import { NavbarComponent } from './components/template/navbar/navbar.component'
 import { AuthComponent } from './pages/auth/auth.component'
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: NavbarComponent,
